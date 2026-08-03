@@ -1,53 +1,63 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+// ─── Raw Palette ──────────────────────────────────────────────────────────────
+export const Palette = {
+  // Primary
+  royalBlue:    '#6A5AE0',
+  dullLavender: '#9087E5',
+  pinkSalmon:   '#FF8FA2',
 
+  // Accent
+  pastelPink:   '#FFD6DD',
+  hawkesBlue:   '#C4D0FB',
+  mintTulip:    '#C9F2E9',
+
+  // Greyscale
+  black:  '#0C092A',
+  grey1:  '#49465F',
+  grey2:  '#858494',
+  grey3:  '#CCCCCC',
+  grey4:  '#E6E6E6',
+  grey5:  '#EDEEFC',
+  white:  '#FFFFFF',
+} as const;
+
+// ─── Semantic Colors ──────────────────────────────────────────────────────────
+// Single flat object — use as Colors.text, Colors.primary, etc.
 export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
-};
+  primary:         Palette.royalBlue,
+  primarySoft:     Palette.dullLavender,
+  secondary:       Palette.pinkSalmon,
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-  },
-});
+  accentPink:      Palette.pastelPink,
+  accentBlue:      Palette.hawkesBlue,
+  accentMint:      Palette.mintTulip,
+
+  text:            Palette.black,
+  textMuted:       Palette.grey1,
+  textSubtle:      Palette.grey2,
+
+  background:      Palette.white,
+  surface:         Palette.grey5,
+  border:          Palette.grey4,
+  divider:         Palette.grey3,
+
+  tint:            Palette.royalBlue,
+  icon:            Palette.grey2,
+  tabIconDefault:  Palette.grey2,
+  tabIconSelected: Palette.royalBlue,
+} as const;
+
+// ─── Typography ──────────────────────────────────────────────────────────────
+export const Fonts = {
+  // Rubik — UI / body text
+  regular:   'Rubik_400Regular',
+  medium:    'Rubik_500Medium',
+  semiBold:  'Rubik_600SemiBold',
+  bold:      'Rubik_700Bold',
+  black:     'Rubik_900Black',
+
+  // Nunito — display / wordmark
+  nunitoExtraBold: 'Nunito_800ExtraBold',
+} as const;
+

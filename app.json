@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "queezy",
-    "slug": "queezy",
+    "name": "Qwizzy",
+    "slug": "qwizzy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "queezy",
+    "scheme": "qwizzy",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
