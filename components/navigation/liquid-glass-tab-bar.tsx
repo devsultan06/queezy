@@ -129,7 +129,7 @@ export function LiquidGlassTabBar({
       }
     };
 
-    const color = isFocused ? Colors.text : "#858494";
+    const color = isFocused ? '#0C092A' : '#CCCCCC';
     const iconSize = 24;
 
     // 1. Custom icon from props
