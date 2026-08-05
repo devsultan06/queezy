@@ -8,6 +8,7 @@ import SearchActiveIcon from '@/assets/images/Icon (9).svg';
 import LeaderboardIconSvg from '@/assets/images/Icon (5).svg';
 import ProfileInactiveIcon from '@/assets/images/Icon (6).svg';
 import ProfileActiveIcon from '@/assets/images/Icon (10).svg';
+import PlusIconSvg from '@/assets/images/plus.svg';
 
 export interface TabIconProps {
   color?: string;
@@ -34,17 +35,7 @@ export function ProfileIcon({ size = 24, focused = false }: TabIconProps) {
   return <Icon width={size} height={size} />;
 }
 
-export function PlusIcon({ color = '#FFFFFF', size = 24 }: TabIconProps) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <Path
-        d="M12 5V19M5 12H19"
-        stroke={color}
-        strokeWidth="2.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </Svg>
-  );
+export function PlusIcon({ size = 24 }: TabIconProps) {
+  return <PlusIconSvg width={size} height={size} />;
 }
 
