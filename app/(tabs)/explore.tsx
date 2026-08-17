@@ -7,12 +7,16 @@ import {
   TouchableOpacity,
   TextInput,
   Image,
+  ImageBackground,
   StatusBar,
 } from 'react-native';
 import Svg, { Path, Circle } from 'react-native-svg';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Colors, Fonts } from '@/constants/theme';
 import { router } from 'expo-router';
+
+import MathIconSvg from '@/assets/images/Icon copy.svg';
+import ScienceIconSvg from '@/assets/images/Icon (1) copy.svg';
 
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
@@ -67,33 +71,30 @@ export default function ExploreScreen() {
           </View>
 
           {/* TOP PICKS Banner Card */}
-          <View style={styles.topPicksCard}>
+          <ImageBackground
+            source={require('@/assets/images/lady-discover.png')}
+            style={styles.topPicksCard}
+            imageStyle={styles.topPicksImageStyle}
+            resizeMode="cover"
+          >
             <View style={styles.topPicksBadge}>
               <Text style={styles.topPicksBadgeText}>TOP PICKS</Text>
             </View>
 
-            <Text style={styles.topPicksTitle}>Travel Trivia Quiz</Text>
+            <View style={styles.topPicksBottomContent}>
+              <Text style={styles.topPicksTitle}>Travel Trivia Quiz</Text>
 
-            <View style={styles.topPicksSubRow}>
-              {/* Music / Mic icon */}
-              <Svg width={14} height={14} viewBox="0 0 24 24" fill="none" style={{ marginRight: 6 }}>
-                <Path
-                  d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"
-                  stroke="#660012"
-                  strokeWidth="2"
-                />
-                <Path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4" stroke="#660012" strokeWidth="2" strokeLinecap="round" />
-              </Svg>
-              <Text style={styles.topPicksSubText}>Music • 5 Quizzes</Text>
+              <View style={styles.topPicksSubRow}>
+                {/* Podcast / Mic Icon */}
+                <Svg width={16} height={16} viewBox="0 0 24 24" fill="none" style={{ marginRight: 6 }}>
+                  <Circle cx="12" cy="7" r="4" stroke="#660012" strokeWidth="2" />
+                  <Path d="M5 9a7 7 0 0014 0" stroke="#660012" strokeWidth="2" strokeLinecap="round" />
+                  <Path d="M12 16v4M8 20h8" stroke="#660012" strokeWidth="2" strokeLinecap="round" />
+                </Svg>
+                <Text style={styles.topPicksSubText}>Music • 5 Quizzes</Text>
+              </View>
             </View>
-
-            {/* Illustration */}
-            <Image
-              source={require('@/assets/images/Illustration (2).png')}
-              style={styles.topPicksIllustration}
-              resizeMode="contain"
-            />
-          </View>
+          </ImageBackground>
         </View>
 
         {/* White Rounded Bottom Sheet Container */}
@@ -101,52 +102,46 @@ export default function ExploreScreen() {
           {/* Section 1: Top rank of the week */}
           <Text style={styles.sectionTitle}>Top rank of the week</Text>
 
-          <View style={styles.rankCard}>
-            {/* Rank Number Circle */}
-            <View style={styles.rankNumberBadge}>
-              <Text style={styles.rankNumberText}>1</Text>
-            </View>
-
-            {/* User Avatar */}
-            <View style={styles.userAvatarContainer}>
+          <View style={styles.rankCardContainer}>
+            <View style={styles.rankCard}>
+              {/* Decorative background curve */}
               <Image
-                source={require('@/assets/images/Avatar2.png')}
-                style={styles.rankAvatarImg}
+                source={require('@/assets/images/Group 778.png')}
+                style={styles.rankCardCurves}
+                resizeMode="stretch"
               />
-            </View>
 
-            {/* User Info */}
-            <View style={styles.rankUserInfo}>
-              <Text style={styles.rankUserName}>Brandon Matrovs</Text>
-              <Text style={styles.rankUserScore}>124 points</Text>
-            </View>
+              {/* Rank Number Circle */}
+              <View style={styles.rankNumberBadge}>
+                <Text style={styles.rankNumberText}>1</Text>
+              </View>
 
-            {/* Top Right Golden Crown Badge */}
-            <View style={styles.crownBadge}>
-              <Svg width={18} height={18} viewBox="0 0 24 24" fill="none">
-                <Path
-                  d="M2 5l3 12h14l3-12-6 7-4-8-4 8-6-7z"
-                  fill="#FFFFFF"
-                  stroke="#FFFFFF"
-                  strokeWidth="1.5"
-                  strokeLinejoin="round"
+              {/* User Avatar with Flag */}
+              <View style={styles.userAvatarContainer}>
+                <Image
+                  source={require('@/assets/images/Avatar-discover.png')}
+                  style={styles.rankAvatarImg}
                 />
-              </Svg>
+                <Image
+                  source={require('@/assets/images/Flag.png')}
+                  style={styles.rankFlagImg}
+                  resizeMode="contain"
+                />
+              </View>
+
+              {/* User Info */}
+              <View style={styles.rankUserInfo}>
+                <Text style={styles.rankUserName}>Brandon Matrovs</Text>
+                <Text style={styles.rankUserScore}>124 points</Text>
+              </View>
             </View>
 
-            {/* Decorative background curve */}
-            <Svg
-              style={{ position: 'absolute', right: 0, bottom: 0 }}
-              width={140}
-              height={90}
-              viewBox="0 0 140 90"
-              pointerEvents="none"
-            >
-              <Path
-                d="M0 90C40 90 90 60 140 0V90H0Z"
-                fill="rgba(255, 255, 255, 0.08)"
-              />
-            </Svg>
+            {/* Top Right Golden Medal Badge */}
+            <Image
+              source={require('@/assets/images/Medal.png')}
+              style={styles.medalBadge}
+              resizeMode="contain"
+            />
           </View>
 
           {/* Section 2: Categories */}
@@ -154,23 +149,18 @@ export default function ExploreScreen() {
 
           <View style={styles.categoriesGrid}>
             {/* Math Card */}
-            <TouchableOpacity style={[styles.categoryCard, { backgroundColor: '#7BE0CA' }]} activeOpacity={0.85}>
+            <TouchableOpacity style={[styles.categoryCard, { backgroundColor: '#88E2CE' }]} activeOpacity={0.85}>
               <View style={styles.categoryIconBox}>
-                <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
-                  <Path d="M4 14l3 4 5-12h8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <Path d="M16 12l4 4M20 12l-4 4" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                </Svg>
+                <MathIconSvg width={28} height={28} />
               </View>
               <Text style={styles.categoryName}>Math</Text>
               <Text style={styles.categorySub}>21 Quizzes</Text>
             </TouchableOpacity>
 
             {/* Science Card */}
-            <TouchableOpacity style={[styles.categoryCard, { backgroundColor: '#9082F6' }]} activeOpacity={0.85}>
+            <TouchableOpacity style={[styles.categoryCard, { backgroundColor: '#9087E5' }]} activeOpacity={0.85}>
               <View style={styles.categoryIconBox}>
-                <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
-                  <Path d="M9 3h6M10 3v5l-4.5 9A2 2 0 007.3 20h9.4a2 2 0 001.8-3L14 8V3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </Svg>
+                <ScienceIconSvg width={28} height={28} />
               </View>
               <Text style={styles.categoryName}>Science</Text>
               <Text style={styles.categorySub}>12 Quizzes</Text>
@@ -231,20 +221,25 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   topPicksCard: {
-    backgroundColor: '#FFEDF0',
-    borderRadius: 24,
-    padding: 20,
-    position: 'relative',
+    backgroundColor: '#FFE0E6',
+    borderRadius: 20,
+    height: 163,
+    padding: 16,
+    justifyContent: 'space-between',
     overflow: 'hidden',
-    minHeight: 140,
+  },
+  topPicksImageStyle: {
+    borderRadius: 20,
   },
   topPicksBadge: {
     backgroundColor: '#FF8FA2',
-    borderRadius: 10,
-    paddingVertical: 4,
-    paddingHorizontal: 10,
+    borderRadius: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
     alignSelf: 'flex-start',
-    marginBottom: 10,
   },
   topPicksBadgeText: {
     fontFamily: Fonts.bold,
@@ -252,11 +247,15 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     letterSpacing: 0.8,
   },
+  topPicksBottomContent: {
+    maxWidth: '58%',
+  },
   topPicksTitle: {
     fontFamily: Fonts.medium,
-    fontSize: 18,
+    fontSize: 16,
+    lineHeight: 24,
     color: '#660012',
-    marginBottom: 6,
+    marginBottom: 4,
   },
   topPicksSubRow: {
     flexDirection: 'row',
@@ -264,16 +263,9 @@ const styles = StyleSheet.create({
   },
   topPicksSubText: {
     fontFamily: Fonts.regular,
-    fontSize: 13,
+    fontSize: 12,
+    lineHeight: 18,
     color: '#660012',
-    opacity: 0.8,
-  },
-  topPicksIllustration: {
-    position: 'absolute',
-    right: -10,
-    bottom: -10,
-    width: 140,
-    height: 140,
   },
   whiteSheet: {
     backgroundColor: '#FFFFFF',
@@ -301,6 +293,10 @@ const styles = StyleSheet.create({
     color: '#0C092A',
     lineHeight: 28,
   },
+  rankCardContainer: {
+    position: 'relative',
+    marginTop: 16,
+  },
   rankCard: {
     backgroundColor: '#6A5AE0',
     borderRadius: 20,
@@ -308,64 +304,75 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     position: 'relative',
-    marginTop: 16,
     overflow: 'hidden',
+    minHeight: 80,
+  },
+  rankCardCurves: {
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    width: 150,
+    height: '100%',
   },
   rankNumberBadge: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    borderColor: 'rgba(255, 255, 255, 0.5)',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
   },
   rankNumberText: {
-    fontFamily: Fonts.bold,
-    fontSize: 14,
+    fontFamily: Fonts.medium,
+    fontSize: 12,
+    lineHeight: 18,
     color: '#FFFFFF',
+    textAlign: 'center',
   },
   userAvatarContainer: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    overflow: 'hidden',
+    width: 56,
+    height: 56,
+    position: 'relative',
     marginRight: 14,
   },
   rankAvatarImg: {
-    width: '100%',
-    height: '100%',
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+  },
+  rankFlagImg: {
+    position: 'absolute',
+    bottom: 0,
+    right: -2,
+    width: 20,
+    height: 20,
   },
   rankUserInfo: {
     flex: 1,
+    zIndex: 1,
   },
   rankUserName: {
     fontFamily: Fonts.medium,
-    fontSize: 18,
+    fontSize: 16,
+    lineHeight: 24,
     color: '#FFFFFF',
     marginBottom: 2,
   },
   rankUserScore: {
     fontFamily: Fonts.regular,
-    fontSize: 13,
-    color: '#E6E4FF',
+    fontSize: 14,
+    lineHeight: 20,
+    color: '#FFFFFF',
   },
-  crownBadge: {
+  medalBadge: {
     position: 'absolute',
-    top: 0,
-    right: 16,
-    width: 30,
-    height: 34,
-    backgroundColor: '#FFC107',
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 4,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.15,
-    shadowRadius: 4,
+    top: -18,
+    right: 18,
+    width: 38,
+    height: 44,
+    zIndex: 2,
   },
   categoriesGrid: {
     flexDirection: 'row',
@@ -374,7 +381,7 @@ const styles = StyleSheet.create({
   },
   categoryCard: {
     flex: 0.48,
-    borderRadius: 24,
+    borderRadius: 20,
     padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -384,20 +391,24 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 12,
   },
   categoryName: {
-    fontFamily: Fonts.bold,
+    fontFamily: Fonts.medium,
     fontSize: 16,
+    lineHeight: 24,
     color: '#FFFFFF',
+    textAlign: 'center',
     marginBottom: 2,
   },
   categorySub: {
     fontFamily: Fonts.regular,
     fontSize: 12,
+    lineHeight: 18,
     color: 'rgba(255, 255, 255, 0.8)',
+    textAlign: 'center',
   },
 });
